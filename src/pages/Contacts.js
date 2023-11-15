@@ -6,23 +6,27 @@ import { Loader } from 'components/Loader';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
 import { useSelector } from 'react-redux';
-import { selectIsLoading } from 'redux/contacts/selectors';
+import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
+import { Container, SubTitle, Title } from 'components/App.styled';
 
 const Contacts = () => {
   const dispatch = useDispatch();
-
+  const contacts = useSelector(selectContacts);
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
   const loading = useSelector(selectIsLoading);
 
   return (
-    <>
+    <Container>
+      <Title>Phonebook</Title>
       <ContactForm />
+      <SubTitle>Contacts</SubTitle>
+
       <Filter />
       {loading && <Loader />}
-      <ContactList />
-    </>
+      {contacts.length > 0 && <ContactList />}
+    </Container>
   );
 };
 
