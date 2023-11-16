@@ -42,7 +42,7 @@ const ContactForm = () => {
         }
         const finalContact = {
           name: values.name,
-          phone: values.number,
+          number: values.number,
         };
         dispatch(addContact(finalContact));
         helpers.resetForm();

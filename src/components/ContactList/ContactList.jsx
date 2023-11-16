@@ -1,33 +1,53 @@
 import React from 'react';
-
-import { List, Item, Button } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { selectVisibleContacts } from 'redux/contacts/selectors';
 import { deleteContact } from 'redux/contacts/operations';
+import { Box, Button, Card, CardBody, Flex, Text } from '@chakra-ui/react';
 
 const ContactList = () => {
   const contacts = useSelector(selectVisibleContacts);
   const dispatch = useDispatch();
 
   return (
-    <List>
+    <Flex
+      as="ul"
+      flexDirection="column"
+      mt={12}
+      w="400px"
+      border="1px solid #82d47b"
+      padding="12px"
+    >
       {contacts.map(({ id, name, number }) => (
-        <Item key={id}>
-          <p>
-            {name}: <span> {number}</span>
-          </p>
-
-          <Button
-            type="button"
-            name="delete"
-            onClick={() => dispatch(deleteContact(id))}
+        <Card as="li" w="100%" mb="5px" border="5px solid #82d47b" key={id}>
+          <CardBody
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
           >
-            &times;
-          </Button>
-        </Item>
+            <Text color="black" fontSize="20px" fontWeight="semibold">
+              {name}:
+            </Text>
+            <Box alignItems="center" display="flex" gap={7}>
+              <Text fontWeight="semibold" fontSize="20px">
+                {number}
+              </Text>
+
+              <Button
+                bg="#82d47b"
+                border="1px solid #82d47b"
+                borderRadius="4px 8px"
+                type="button"
+                name="delete"
+                bgGradient="linear(to-l, #23eb27, #82d47b)"
+                onClick={() => dispatch(deleteContact(id))}
+              >
+                &times;
+              </Button>
+            </Box>
+          </CardBody>
+        </Card>
       ))}
-    </List>
+    </Flex>
   );
 };
 export default ContactList;

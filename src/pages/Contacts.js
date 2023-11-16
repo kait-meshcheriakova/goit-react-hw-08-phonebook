@@ -7,7 +7,8 @@ import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
 import { useSelector } from 'react-redux';
 import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
-import { Container, SubTitle, Title } from 'components/App.styled';
+import { Container } from 'components/App.styled';
+import { Text } from '@chakra-ui/react';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -19,10 +20,15 @@ const Contacts = () => {
 
   return (
     <Container>
-      <Title>Phonebook</Title>
+      <Text
+        bgGradient="linear(to-l, #23eb27, #82d47b)"
+        bgClip="text"
+        fontSize="6xl"
+        fontWeight="extrabold"
+      >
+        Phonebook
+      </Text>
       <ContactForm />
-      <SubTitle>Contacts</SubTitle>
-
       <Filter />
       {loading && <Loader />}
       {contacts.length > 0 && <ContactList />}

@@ -1,16 +1,4 @@
-// import { Helmet } from 'react-helmet';
-// import RegisterForm from 'components/RegisterForm/RegisterForm';
-
-// export default function Register() {
-//   return (
-//     <div>
-//       <Helmet>
-//         <title>Registration</title>
-//       </Helmet>
-//       <RegisterForm />
-//     </div>
-//   );
-// }
+import { Box, Button, Flex, Input, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
@@ -51,37 +39,104 @@ export default function RegisterForm() {
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
+    <Flex align="center" justify="center" h="100vh">
+      <Box
+        // bgGradient="linear(to-l, #23eb27, #82d47b)"
+        p={6}
+        rounded="md"
+        w={500}
+      >
+        <Text
+          as="h2"
+          textAlign="center"
+          fontSize={30}
+          fontWeight={700}
+          mb={4}
+          bgGradient="linear(to-l, #23eb27, #82d47b)"
+          bgClip="text"
+        >
+          SIGN IN
+        </Text>
+        <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
+          <Text
+            as="label"
+            fontSize="24px"
+            fontWeight="semibold"
+            bgGradient="linear(to-l, #23eb27, #82d47b)"
+            bgClip="text"
+          >
+            Enter your name
+            <Input
+              fontSize="24px"
+              fontWeight="semibold"
+              width="400px"
+              padding="10px"
+              margin="0 auto"
+              color="black"
+              borderRadius="4px"
+              border="3px solid #82d47b"
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleChange}
+            />
+          </Text>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Username
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
+          <Text
+            as="label"
+            fontSize="24px"
+            fontWeight="semibold"
+            bgGradient="linear(to-l, #23eb27, #82d47b)"
+            bgClip="text"
+          >
+            Enter your email
+            <Input
+              fontSize="24px"
+              fontWeight="semibold"
+              width="400px"
+              padding="10px"
+              margin="0 auto"
+              borderRadius="4px"
+              border="3px solid #82d47b"
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </Text>
 
-        <label style={styles.label}>
-          Email
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
+          <Text
+            as="label"
+            fontSize="24px"
+            fontWeight="semibold"
+            bgGradient="linear(to-l, #23eb27, #82d47b)"
+            bgClip="text"
+          >
+            Enter password
+            <Input
+              fontSize="24px"
+              fontWeight="semibold"
+              width="400px"
+              padding="10px"
+              margin="0 auto"
+              borderRadius="4px"
+              border="2px solid #82d47b"
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </Text>
 
-        <label style={styles.label}>
-          Password
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
-
-        <button type="submit">Register</button>
-      </form>
-    </div>
+          <Button
+            type="submit"
+            colorScheme="green"
+            _activeLink={{ bg: 'white', color: '#82d47b' }}
+          >
+            Register
+          </Button>
+        </form>
+      </Box>
+    </Flex>
   );
 }

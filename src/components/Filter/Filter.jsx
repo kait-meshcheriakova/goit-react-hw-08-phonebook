@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Div, Label, Input } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter } from 'redux/contacts/selectors';
 import { changeFilter } from 'redux/contacts/filterSlice';
+import { Box, Text, Input } from '@chakra-ui/react';
 
 function Filter() {
   const handleFilterChange = event => {
@@ -11,16 +11,31 @@ function Filter() {
   };
   const dispatch = useDispatch();
   return (
-    <Div>
-      <Label>
+    <Box mb="12px" mt="32px">
+      <Text
+        as="label"
+        fontSize="28px"
+        fontWeight="semibold"
+        paddingLeft="40px"
+        bgGradient="linear(to-l, #23eb27, #82d47b)"
+        bgClip="text"
+      >
         Find contacts by name
         <Input
+          fontSize="24px"
+          fontWeight="semibold"
+          width="400px"
+          padding="10px"
+          margin="0 auto"
+          color="black"
+          borderRadius="4px"
+          border="1px solid #82d47b"
           type="text"
           value={useSelector(selectFilter)}
           onChange={handleFilterChange}
         />
-      </Label>
-    </Div>
+      </Text>
+    </Box>
   );
 }
 
