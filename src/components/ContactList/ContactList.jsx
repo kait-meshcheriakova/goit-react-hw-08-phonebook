@@ -38,6 +38,8 @@ const ContactList = () => {
                 borderRadius="4px 8px"
                 type="button"
                 name="delete"
+                colorScheme="green"
+                _activeLink={{ bg: 'white', color: '#82d47b' }}
                 bgGradient="linear(to-l, #23eb27, #82d47b)"
                 onClick={() => dispatch(deleteContact(id))}
               >

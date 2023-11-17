@@ -2,16 +2,6 @@ import { Box, Button, Flex, Input, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
@@ -39,8 +29,9 @@ export default function RegisterForm() {
   };
 
   return (
-    <Flex align="center" justify="center" h="100vh">
+    <Flex bg="#dffecf" alignItems="center" justify="center" h="100vh">
       <Box
+        alignItems="center"
         // bgGradient="linear(to-l, #23eb27, #82d47b)"
         p={6}
         rounded="md"
@@ -57,7 +48,7 @@ export default function RegisterForm() {
         >
           SIGN IN
         </Text>
-        <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
+        <form onSubmit={handleSubmit} autoComplete="off">
           <Text
             as="label"
             fontSize="24px"
@@ -129,6 +120,11 @@ export default function RegisterForm() {
           </Text>
 
           <Button
+            border="1px solid #82d47b"
+            borderRadius="4px 8px"
+            bgGradient="linear(to-l, #23eb27, #82d47b)"
+            mt={4}
+            alignItems="center"
             type="submit"
             colorScheme="green"
             _activeLink={{ bg: 'white', color: '#82d47b' }}

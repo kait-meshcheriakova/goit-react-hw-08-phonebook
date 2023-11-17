@@ -7,8 +7,8 @@ import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
 import { useSelector } from 'react-redux';
 import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
-import { Container } from 'components/App.styled';
-import { Text } from '@chakra-ui/react';
+// import { Container } from 'components/App.styled';
+import { Box, Text } from '@chakra-ui/react';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -19,20 +19,22 @@ const Contacts = () => {
   const loading = useSelector(selectIsLoading);
 
   return (
-    <Container>
-      <Text
-        bgGradient="linear(to-l, #23eb27, #82d47b)"
-        bgClip="text"
-        fontSize="6xl"
-        fontWeight="extrabold"
-      >
-        Phonebook
-      </Text>
-      <ContactForm />
-      <Filter />
-      {loading && <Loader />}
-      {contacts.length > 0 && <ContactList />}
-    </Container>
+    <Box bg="#dffecf" alignItems="center" justify="center" h="100vh">
+      <Box width="400px" padding="10px" margin="0 auto">
+        <Text
+          bgGradient="linear(to-l, #23eb27, #82d47b)"
+          bgClip="text"
+          fontSize="6xl"
+          fontWeight="extrabold"
+        >
+          Phonebook
+        </Text>
+        <ContactForm />
+        <Filter />
+        {loading && <Loader />}
+        {contacts.length > 0 && <ContactList />}
+      </Box>
+    </Box>
   );
 };
 

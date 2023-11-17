@@ -18,13 +18,16 @@ export const LoginForm = () => {
   };
 
   return (
-    <Flex align="center" justify="center" h="100vh">
-      <Box
-        // bgGradient="linear(to-l, #23eb27, #82d47b)"
-        p={6}
-        rounded="md"
-        w={500}
-      >
+    <Flex
+      bgImage="url('/images/gaara.png')"
+      bgPosition="center"
+      bgRepeat="no-repeat"
+      bg="#dffecf"
+      align="center"
+      justify="center"
+      h="100vh"
+    >
+      <Box p={6} rounded="md" w={500}>
         <Text
           as="h2"
           textAlign="center"
@@ -78,6 +81,10 @@ export const LoginForm = () => {
             />
           </Text>
           <Button
+            border="1px solid #82d47b"
+            borderRadius="4px 8px"
+            bgGradient="linear(to-l, #23eb27, #82d47b)"
+            mt={4}
             type="submit"
             colorScheme="green"
             _activeLink={{ bg: 'white', color: '#82d47b' }}

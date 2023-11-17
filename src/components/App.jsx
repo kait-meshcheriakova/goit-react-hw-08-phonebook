@@ -1,34 +1,3 @@
-// import { Container, SubTitle, Title } from './App.styled';
-// import ContactForm from './ContactForm/ContactForm';
-// import Filter from './Filter/Filter';
-// import ContactList from './ContactList/ContactList';
-// import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-// import { fetchContacts } from 'redux/contacts/operations';
-// import { Loader } from './Loader';
-
-// export const App = () => {
-//   const contacts = useSelector(selectContacts);
-//   const isLoading = useSelector(selectIsLoading);
-
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     dispatch(fetchContacts());
-//   }, [dispatch]);
-//   return (
-//     <Container>
-//       <Title>Phonebook</Title>
-//       <ContactForm />
-//       <SubTitle>Contacts</SubTitle>
-
-//       <Filter />
-//       {isLoading && <Loader />}
-//       {contacts.length > 0 && <ContactList />}
-//     </Container>
-//   );
-// };
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
@@ -38,6 +7,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 import { PrivateRoute } from './PrivateRoute';
+import { Loader } from './Loader';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -53,7 +23,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <Loader />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>

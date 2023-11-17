@@ -7,12 +7,12 @@ import {
   StyledField,
   ErrorMsg,
   InputContainer,
-  ButtonForm,
   Text,
 } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
+import { Button } from '@chakra-ui/react';
 
 const formSchema = Yup.object().shape({
   name: Yup.string()
@@ -62,7 +62,17 @@ const ContactForm = () => {
           <ErrorMsg name="number" component="div" />
         </InputContainer>
 
-        <ButtonForm type="submit">Add contact</ButtonForm>
+        <Button
+          // bg="#82d47b"
+          border="1px solid #82d47b"
+          borderRadius="4px 8px"
+          colorScheme="green"
+          _activeLink={{ bg: 'white', color: '#82d47b' }}
+          bgGradient="linear(to-l, #23eb27, #82d47b)"
+          type="submit"
+        >
+          Add contact
+        </Button>
       </StyledForm>
     </Formik>
   );

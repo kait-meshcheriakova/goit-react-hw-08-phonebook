@@ -8,7 +8,7 @@ export const AppBar = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <Box as="header" py={2}>
+    <Box as="header" bg="#98fb64" py={2}>
       <Container maxW=" container.lg">
         <Flex justifyContent="space-between" alignItems="center">
           <Navigation />
@@ -18,3 +18,5 @@ export const AppBar = () => {
     </Box>
   );
 };
+// #c6fda9
+// #90EE90
